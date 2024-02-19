@@ -1,4 +1,5 @@
 import Slots
+import Blackjack
 import config
 import random
 import time
@@ -41,7 +42,7 @@ if (input("Would you like to [g]amble for you starting cash, or start with [$]80
     time.sleep(1)
     print("Your balance is now $" + str(config.balance))
 else:
-    balance = 800
+    config.balance = 800
     print("Your balance is now $" + str(config.balance))
 
 time.sleep(2)

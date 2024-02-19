@@ -1,15 +1,6 @@
-#def init():
-#    global balance
-#    balance = 0
-#    global game
-#    game = ""
-#    global specialCharacters
-#    specialCharacters = ["|$|", "|%|", "|#|", "|&|", "|@|", "|!|", "|?|", "|=|", "|*|"]
-#    global JackpotCombinations
-#    JackpotCombinations = ["|$||$||$|", "|%||%||%|", "|#||#||#|", "|&||&||&|", "|@||@||@|", "|!||!||!|", "|?||?||?|", "|=||=||=|", "|*||*||*|"]
-
 balance = 0
+bet = 0
 game = ""
 specialCharacters = ["|$|", "|%|", "|#|", "|&|", "|@|", "|!|", "|?|", "|=|", "|*|"]
 JackpotCombinations = ["|$||$||$|", "|%||%||%|", "|#||#||#|", "|&||&||&|", "|@||@||@|", "|!||!||!|", "|?||?||?|", "|=||=||=|", "|*||*||*|"]
-bet = 0
+cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
