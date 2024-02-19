@@ -1,0 +1,79 @@
+from Slots import slots
+import random
+import time
+
+# Variables
+balance = 0
+game = ""
+
+specialCharacters = ["|$|", "|%|", "|#|", "|&|", "|@|", "|!|", "|?|", "|=|", "|*|"]
+JackpotCombinations = ["|$||$||$|", "|%||%||%|", "|#||#||#|", "|&||&||&|", "|@||@||@|", "|!||!||!|", "|?||?||?|", "|=||=||=|", "|*||*||*|"]
+
+
+
+# Functions------------------------------------------------------------------------------------#
+
+#slot machine for initial gabmle balance if user chooses to do so
+def initializeBalance():
+    global balance
+    combination = (random.choice(specialCharacters) + random.choice(specialCharacters) + random.choice(specialCharacters))
+    for n in range (30):
+        print(random.choice(specialCharacters) + random.choice(specialCharacters) + random.choice(specialCharacters))
+        time.sleep(0.01+n/100)
+    time.sleep(1)
+    print(combination)
+    combo = list(combination)
+    time.sleep(1)
+    if (combination in JackpotCombinations):
+        print("You won the jackpot!")
+        balance = 10000
+        time.sleep(1)
+        print("Your balance is now $" + str(balance))
+    if (combo[1] == combo[4] or combo[1] == combo[7] or combo[4] == combo[7]):
+        print("No jackpot, but you won $1000!")
+        balance = 1000
+    else:
+        print("You lost! You only get $300 :(")
+        balance = 300
+    
+#robust input. Works like a hub to lead to each game and back to the hub.
+def pickGame():
+    global game
+    game = "0"
+    while (game != "1"):
+        game = input("Select a game: 1. Slots ")
+        if (game == "1"):
+            break
+        print("Invalid input. Please try again.")
+    if (game == "1"):
+        slots()
+
+
+#----------------------------------------------------------------------------------------------#
+
+print("Welcome to the Python Casino!")
+time.sleep(1)
+if (input("Would you like to [g]amble for you starting cash, or start with [$]800?") == "g"):
+    print("Off to the races already I see!")
+    time.sleep(1.5)
+    print("Here we go!")
+    time.sleep(1)
+    initializeBalance()
+    time.sleep(1)
+    print("Your balance is now $" + str(balance))
+else:
+    balance = 800
+    print("Your balance is now $" + str(balance))
+
+time.sleep(2)
+print("Let's get started!")
+time.sleep(1.5)
+pickGame()
+ 
+
+
+
+
+
+
+

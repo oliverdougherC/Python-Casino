@@ -1,0 +1,47 @@
+from Casino import pickGame
+import random
+import time
+
+
+specialCharacters = ["|$|", "|%|", "|#|", "|&|", "|@|", "|!|", "|?|", "|=|", "|*|"]
+JackpotCombinations = ["|$||$||$|", "|%||%||%|", "|#||#||#|", "|&||&||&|", "|@||@||@|", "|!||!||!|", "|?||?||?|", "|=||=||=|", "|*||*||*|"]
+
+def slots():
+    global balance
+    bet = int(input("How much would you like to bet? (Input 0 to pick a different game) "))
+    if (bet == 0):
+        pickGame()
+    else:
+        if (bet > balance):
+            print("You don't have enough money to bet that much!")
+            slots()
+        else:
+            balance = balance - bet
+            combination = (random.choice(specialCharacters) + random.choice(specialCharacters) + random.choice(specialCharacters))
+            for n in range (30):
+                print(random.choice(specialCharacters) + random.choice(specialCharacters) + random.choice(specialCharacters))
+                time.sleep(0.01+n/100)
+            time.sleep(1)
+            print(combination)
+            combo = list(combination)
+            time.sleep(1)
+            if (combination in JackpotCombinations):
+                print("You won the jackpot!")
+                balance = balance + bet*10
+                time.sleep(1)
+                print("Your balance is now $" + str(balance))
+            if (combo[1] == combo[4] or combo[1] == combo[7] or combo[4] == combo[7]):
+                print("No jackpot, but you get your bet back!")
+                balance = balance + bet
+            else:
+                print("You lost! :(")
+            time.sleep(1)
+            print("Your balance is now $" + str(balance))
+            if (balance == 0):
+                print("You lost all your money! Game over.")
+                time.sleep(1)
+                print("Thanks for playing!")
+                time.sleep(1)
+                exit()
+            else:
+                slots()
