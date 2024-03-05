@@ -1,4 +1,3 @@
-import main
 import Slots
 import config
 import random
@@ -50,6 +49,7 @@ def Blackjack():
                 print("Dealer wins.")
                 time.sleep(1)
                 print("Your balance is now $" + str(config.balance/2))
+                Blackjack()
                 if (config.balance == 0):
                     print("You lost all your money! Game over.")
                     time.sleep(1)
@@ -71,6 +71,8 @@ def Blackjack():
                     if (config.balance == 0):
                         print("You lost all your money! Game over.")
                         time.sleep(1)
+                    else:
+                        Blackjack()
                 if (sum(dealerHand) > sum(playerHand) and sum(dealerHand) <= 21):
                     print("Dealer wins.")
                     time.sleep(1)

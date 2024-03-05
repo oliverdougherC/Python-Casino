@@ -1,4 +1,3 @@
-import main
 import Blackjack
 import config
 import random
