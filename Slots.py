@@ -1,4 +1,4 @@
-import main
+import Blackjack
 import config
 import random
 import time
@@ -49,10 +49,12 @@ def slots():
 #robust input. Works like a hub to lead to each game and back to the hub.
 def pickGame():
     config.game = "0"
-    while (config.game != "1"):
-        config.game = input("Select a game: 1. Slots ")
-        if (config.game == "1"):
+    while (config.game == "0"):
+        config.game = input("Select a game: 1. Slots 2. Blackjack ")
+        if (config.game == "1" or "2"):
             break
         print("Invalid input. Please try again.")
     if (config.game == "1"):
         slots()
+    if (config.game == "2"):
+        Blackjack.Blackjack()

@@ -1,4 +1,5 @@
 import Slots
+import Blackjack
 import config
 import random
 import time
@@ -17,15 +18,15 @@ def initializeBalance():
     time.sleep(1)
     if (combination in config.JackpotCombinations):
         print("You won the jackpot!")
-        config.balance = 10000
+        config.balance = config.GWinIAmount
         time.sleep(1)
         print("Your balance is now $" + str(config.balance))
     if (combo[1] == combo[4] or combo[1] == combo[7] or combo[4] == combo[7]):
         print("No jackpot, but you won $1000!")
-        config.balance = 1000
+        config.balance = config.GNeutralIAmount
     else:
         print("You lost! You only get $300 :(")
-        config.balance = 300
+        config.balance = config.GLoseIAmount
 
 
 #----------------------------------------------------------------------------------------------#
@@ -41,7 +42,7 @@ if (input("Would you like to [g]amble for you starting cash, or start with [$]80
     time.sleep(1)
     print("Your balance is now $" + str(config.balance))
 else:
-    balance = 800
+    config.balance = config.defaultIAmount
     print("Your balance is now $" + str(config.balance))
 
 time.sleep(2)
