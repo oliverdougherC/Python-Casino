@@ -6,6 +6,12 @@ import time
 
 # Functions------------------------------------------------------------------------------------#
 
+#Bugs:
+# If user inputs a non-int for the bet value, the program will crash
+#pickgame function ends program if user inputs random value (????)
+#Dealer still wont 'hit' itself properly (>=17) and if player wins, program ends
+
+
 #slot machine for initial gabmle balance if user chooses to do so
 def initializeBalance():
     combination = (random.choice(config.specialCharacters) + random.choice(config.specialCharacters) + random.choice(config.specialCharacters))

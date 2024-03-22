@@ -30,7 +30,7 @@ def Blackjack():
                 print("Your hand: " + str(playerHand))
                 time.sleep(1)
                 if (sum(playerHand) > 21):
-                    print("You busted! You lose.")
+                    print("Bust! You lose.")
                     time.sleep(1)
                     print("Your balance is now $" + str(config.balance))
                     if (config.balance == 0):
@@ -59,7 +59,7 @@ def Blackjack():
                 else:
                     Blackjack()
         else:
-            while (sum(dealerHand) < 17):
+            while (sum(dealerHand) <= 16 or sum(dealerHand) == sum(playerHand)):
                 dealerHand.append(random.choice(config.cards))
                 print("Dealer's hand: " + str(dealerHand))
                 time.sleep(1)
@@ -77,6 +77,19 @@ def Blackjack():
                     print("Dealer wins.")
                     time.sleep(1)
                     print("Your balance is now $" + str(config.balance/2))
+                    if (config.balance == 0 or config.balance == 0.0):
+                        print("You lost all your money! Game over.")
+                        time.sleep(1)
+                        print("Thanks for playing!")
+                        time.sleep(1)
+                        exit()
+                    else:
+                        Blackjack()
+                if (sum(dealerHand) < sum(playerHand)):
+                    print("You win!")
+                    config.balance = config.balance + config.bet*2
+                    time.sleep(1)
+                    print("Your balance is now $" + str(config.balance))
                     if (config.balance == 0):
                         print("You lost all your money! Game over.")
                         time.sleep(1)
